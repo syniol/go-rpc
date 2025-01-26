@@ -1,0 +1,26 @@
+services:
+  syniol_rpc_server:
+    image: golang:1.23-alpine
+    container_name: syniol_rpc_server
+    volumes:
+      - "../../:/var/local/app"
+    working_dir: /var/local/app
+    entrypoint: ["go", "run", "./cmd/server.go"]
+    networks:
+      - syniol_rpc_net
+
+  syniol_rpc_client:
+    image: golang:1.23-alpine
+    container_name: syniol_rpc_client
+    depends_on:
+      - syniol_rpc_server
+    tty: true
+    volumes:
+      - "../../:/var/local/app"
+    working_dir: /var/local/app
+    networks:
+      - syniol_rpc_net
+
+networks:
+  syniol_rpc_net:
+    driver: bridge
