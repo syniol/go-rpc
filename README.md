@@ -2,12 +2,14 @@
 Demonstration of RPC implementation using Golang's built-in library (net/rpc)
 
 
-## Client Execution
-You can enter the client container and run the client with a command below:
+## Up and Running
+At the root of project, please run `make` and Docker Containers should start. 
+You can stop the container with `make down` command.
 
-```sh
-  make client
-```
+
+## Client Execution
+You can run the client with a command `make client` to see the response 
+from server.
 
 
 #### Credits
